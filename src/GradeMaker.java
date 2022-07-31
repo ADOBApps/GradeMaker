@@ -1,7 +1,7 @@
 /**
  * Simple class to receive and calculate
  * grade avarage
- * date: 24/07/2022
+ * date: 30/07/2022
  * @author [Acxel Orozco (ADOB Apps)]
  * 
  */
@@ -15,33 +15,31 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+//import java.awt.Toolkit;
 import java.awt.*;
 import java.awt.event.*;
 
 //re-use our class made at CheckMake
 import mycontrollers.MyVerifier;
+//re-use and to adapted from CheckMake
+import mycontrollers.MyChanger;
+//Our Signature panel
+import myviews.Signature;
 
 class GradeMaker implements ActionListener{
 
 	//Declare UI and IO elements
-	Border btitle1, btitle2, btitle3;
 	Container contentPane;
 	GridBagConstraints gbctts;
 	JButton jb_calc, jb_del;
 	JFrame frame1;
-	JLabel jl_g1, jl_g2, jl_g3;
-	JPanel jp_math, jp_es, jp_en, jp_control;
-	JTextField jtf_g_m1, jtf_g_m2, jtf_g_m3;
-	JTextField jtf_g_es1, jtf_g_es2, jtf_g_es3;
-	JTextField jtf_g_en1, jtf_g_en2, jtf_g_en3 
+	Signature s_math, s_es, s_en;
+	Toolkit tk;
+	
+	int screenW, screenH;
 
 	//Constructor function
 	public GradeMaker(){
-
-		//Define border with title for each JPanel
-		btitle1 = BorderFactory.createTitledBorder("Matematicas");
-		btitle2 = BorderFactory.createTitledBorder("Español");
-		btitle3 = BorderFactory.createTitledBorder("Ingles");
 
 		//Create a Layout dimension manager
 		gbctts = new GridBagConstraints();
@@ -62,11 +60,45 @@ class GradeMaker implements ActionListener{
 
 		//Define JFrame's content manager
 		contentPane = frame1.getContentPane();
+
+		//Toolkit
+		tk = Toolkit.getDefaultToolkit();
+		screenH = tk.getScreenSize().height;
+		screenW = tk.getScreenSize().width;
+
+		makeGraph();
+
 	}
 
 	//main function
 	public static void main (String arg[]){
 		GradeMaker gm = new GradeMaker();
+	}
+
+	//create GUI
+	private void makeGraph(){
+		//Def Signature object
+		s_math = new Signature("Matematicas", new MyVerifier());
+		//Def Signature object
+		s_en = new Signature("Ingles", new MyVerifier());
+		//Def Signature object
+		s_es = new Signature("Castellano", new MyVerifier());
+
+		//Add Matematicas panel to Frame
+		contentPane.add(s_math, BorderLayout.NORTH);
+		//Add Castellano panel to Frame
+		contentPane.add(s_es, BorderLayout.CENTER);
+		//Add Ingles panel to Frame
+		contentPane.add(s_en, BorderLayout.SOUTH);
+
+		//Adatable frame
+		//frame1.pack();
+		
+		//Frame size JFrame.setSize(int width, int height);
+		//Adatable size to device screen size
+		frame1.setSize( ((int)(screenW*0.5)), ((int)(screenH*0.5)) );
+		//Show frame
+		frame1.setVisible(true);
 	}
 
 	//Control button's action 
