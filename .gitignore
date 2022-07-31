@@ -2,4 +2,6 @@
 test
 doc
 classes
+classes/mycontrollers
+classes/myviews
 *.gpj
