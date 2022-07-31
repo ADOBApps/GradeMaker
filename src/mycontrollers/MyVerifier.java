@@ -1,7 +1,7 @@
 /**
 * Verify JTextfields text number using java swing
 *
-* Created on 23/07/2022
+* Created on 31/07/2022
 * @author  Acxel Orozco (ADOB Apps)
  */
 package mycontrollers;
@@ -20,13 +20,21 @@ public class MyVerifier extends InputVerifier{
 		if(input instanceof JTextField){
 			JTextField tf = (JTextField) input;
 			String text = ((JTextField)tf).getText();
-			try{
-				//Try to convert text to Float to verify number
-				Float.parseFloat(text);
-				return true;
-			}catch(Exception e){
-				JOptionPane.showMessageDialog(tf, "Valor no valido");
-				return false;
+			if (text.equals("")){
+				tf.setText("0.0");
+			} else{
+				if( (Float.parseFloat(text))>5.0f ){
+					JOptionPane.showMessageDialog(tf, "Valor no valido, las notas deben ser <= 5.0");
+					tf.setText("0.0");
+				}
+				try{
+					//Try to convert text to Float to verify number
+					Float.parseFloat(text);
+					return true;
+				}catch(Exception e){
+					JOptionPane.showMessageDialog(tf, "Valor no valido");
+					return false;
+				}
 			}
 		}
 		return true;

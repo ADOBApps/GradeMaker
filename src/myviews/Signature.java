@@ -7,6 +7,7 @@
 
 package myviews;
 
+
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.InputVerifier;
@@ -22,9 +23,9 @@ public class Signature extends JPanel{
 
 	//Declare UI elements and controls
 	GridBagConstraints gbctts;
-	JTextField jtf_g1, jtf_g2;
-	JTextField jtf_g3, jtf_gt;
-	JLabel jl_g1, jl_g2, jl_g3, jl_gt;
+	public JTextField jtf_g1, jtf_g2;
+	public JTextField jtf_g3, jtf_gt;
+	public JLabel jl_g1, jl_g2, jl_g3, jl_gt;
 
 	//Constructor function
 	public Signature(String title, InputVerifier pv){
@@ -55,19 +56,19 @@ public class Signature extends JPanel{
 		jl_gt.setText("Promedio");
 
 		//JTextField grade 1
-		jtf_g1 = new JTextField(4);
+		jtf_g1 = new JTextField(3);
 		jtf_g1.setInputVerifier(pv);
 
 		//JTextField grade 2
-		jtf_g2 = new JTextField(4);
+		jtf_g2 = new JTextField(3);
 		jtf_g2.setInputVerifier(pv);
 
 		//JTextField grade 3
-		jtf_g3 = new JTextField(4);
+		jtf_g3 = new JTextField(3);
 		jtf_g3.setInputVerifier(pv);
 
 		//JTextField average grade
-		jtf_gt = new JTextField(4);
+		jtf_gt = new JTextField(3);
 		jtf_gt.setEditable(false);
 
 		addGrades();
