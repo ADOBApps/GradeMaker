@@ -202,7 +202,7 @@ class GradeMaker implements ActionListener, ItemListener{
 					t_grades = t_grades + grades.get(i);
 					i+=1;
 				}
-				System.out.println(t_grades);
+				//Set grade average
 				s_es.jtf_gt.setText( ((String)Float.toString(t_grades/3)) );
 			} else if( (data.get(0)).equals("en") ){
 				grades.push(Float.parseFloat(s_en.jtf_g1.getText()));
@@ -214,7 +214,7 @@ class GradeMaker implements ActionListener, ItemListener{
 					t_grades = t_grades + grades.get(i);
 					i+=1;
 				}while(i<grades.size());
-				System.out.println(t_grades);
+				//Set grade average
 				s_en.jtf_gt.setText( ((String)Float.toString(t_grades/3)) );
 			}
 		} else if(ae.getSource()==jb_del){
@@ -222,22 +222,22 @@ class GradeMaker implements ActionListener, ItemListener{
 			grades.clear();
 			//Clen cumulated value
 			t_grades = 0.0f;
-
+			//Clean JTesxtField
 			if( (data.get(0)).equals("math") ){
-				s_math.jtf_g1.setText("");
-				s_math.jtf_g2.setText("");
-				s_math.jtf_g3.setText("");
-				s_math.jtf_gt.setText("");
+				s_math.jtf_g1.setText("0.0");
+				s_math.jtf_g2.setText("0.0");
+				s_math.jtf_g3.setText("0.0");
+				s_math.jtf_gt.setText("0.0");
 			} else if ( (data.get(0)).equals("es") ){
-				s_es.jtf_g1.setText("");
-				s_es.jtf_g2.setText("");
-				s_es.jtf_g3.setText("");
-				s_es.jtf_gt.setText("");
+				s_es.jtf_g1.setText("0.0");
+				s_es.jtf_g2.setText("0.0");
+				s_es.jtf_g3.setText("0.0");
+				s_es.jtf_gt.setText("0.0");
 			} else if( (data.get(0)).equals("en") ){
-				s_en.jtf_g1.setText("");
-				s_en.jtf_g2.setText("");
-				s_en.jtf_g3.setText("");
-				s_en.jtf_gt.setText("");
+				s_en.jtf_g1.setText("0.0");
+				s_en.jtf_g2.setText("0.0");
+				s_en.jtf_g3.setText("0.0");
+				s_en.jtf_gt.setText("0.0");
 			}
 		} else if(ae.getSource()==jb_back){
 			starGraph();
@@ -264,8 +264,6 @@ class GradeMaker implements ActionListener, ItemListener{
 			else{
 				starGraph();
 			}
-			System.out.printf("Selection %s"+"\n", selected);
-
 		}
 	}
 }
